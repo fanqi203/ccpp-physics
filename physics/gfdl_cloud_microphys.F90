@@ -277,16 +277,16 @@ contains
       do k=1,levs
         kk = levs-k+1
         do i=1,im
-            gq0(i,k)         = qv1(i,kk) + qv_dt(i,kk) * dtp
-            gq0_ntcw(i,k)    = ql1(i,kk) + ql_dt(i,kk) * dtp
-            gq0_ntrw(i,k)    = qr1(i,kk) + qr_dt(i,kk) * dtp
-            gq0_ntiw(i,k)    = qi1(i,kk) + qi_dt(i,kk) * dtp
-            gq0_ntsw(i,k)    = qs1(i,kk) + qs_dt(i,kk) * dtp
-            gq0_ntgl(i,k)    = qg1(i,kk) + qg_dt(i,kk) * dtp
-            gq0_ntclamt(i,k) = qa1(i,kk) + qa_dt(i,kk) * dtp
-            gt0(i,k)         = gt0(i,k)  + pt_dt(i,kk) * dtp
-            gu0(i,k)         = gu0(i,k)  + u_dt(i,kk)  * dtp
-            gv0(i,k)         = gv0(i,k)  + v_dt(i,kk)  * dtp
+            gq0(i,k)         = qv1(i,kk) + qv_dt(i,kk) * dtp * cld_dq_param
+            gq0_ntcw(i,k)    = ql1(i,kk) + ql_dt(i,kk) * dtp * cld_dqc_param
+            gq0_ntrw(i,k)    = qr1(i,kk) + qr_dt(i,kk) * dtp * cld_dqr_param
+            gq0_ntiw(i,k)    = qi1(i,kk) + qi_dt(i,kk) * dtp * cld_dqi_param
+            gq0_ntsw(i,k)    = qs1(i,kk) + qs_dt(i,kk) * dtp * cld_dqs_param 
+            gq0_ntgl(i,k)    = qg1(i,kk) + qg_dt(i,kk) * dtp * cld_dqg_param
+            gq0_ntclamt(i,k) = qa1(i,kk) + qa_dt(i,kk) * dtp * cld_dqf_param
+            gt0(i,k)         = gt0(i,k)  + pt_dt(i,kk) * dtp * cld_dt_param
+            gu0(i,k)         = gu0(i,k)  + u_dt(i,kk)  * dtp * cld_du_param
+            gv0(i,k)         = gv0(i,k)  + v_dt(i,kk)  * dtp * cld_dv_param
             refl_10cm(i,k)   = refl(i,kk)
         enddo
       enddo

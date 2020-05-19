@@ -1171,6 +1171,10 @@ c
       enddo
 !
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      du=du*pbl_du_param
+      dv=dv*pbl_dv_param
+      tau=tau*pbl_t_param
+      rtg=rtg*pbl_q_param
       return
       end subroutine hedmf_run
 !> @}

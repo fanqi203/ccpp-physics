@@ -1212,14 +1212,14 @@
 
 !  --- ...  toa and sfc fluxes
 
-        topflx(j1)%upfxc = ftoauc
-        topflx(j1)%dnfxc = ftoadc
-        topflx(j1)%upfx0 = ftoau0
+        topflx(j1)%upfxc = ftoauc * sw_topflx_param
+        topflx(j1)%dnfxc = ftoadc * sw_topflx_param
+        topflx(j1)%upfx0 = ftoau0 * sw_topflx_param
 
-        sfcflx(j1)%upfxc = fsfcuc
-        sfcflx(j1)%dnfxc = fsfcdc
-        sfcflx(j1)%upfx0 = fsfcu0
-        sfcflx(j1)%dnfx0 = fsfcd0
+        sfcflx(j1)%upfxc = fsfcuc * sw_sfcflx_param
+        sfcflx(j1)%dnfxc = fsfcdc * sw_sfcflx_param
+        sfcflx(j1)%upfx0 = fsfcu0 * sw_sfcflx_param
+        sfcflx(j1)%dnfx0 = fsfcd0 * sw_sfcflx_param 
 
         if (ivflip == 0) then       ! output from toa to sfc
 
@@ -1320,6 +1320,8 @@
         endif                       ! if_ivflip
 
       enddo   lab_do_ipt
+      hswc=hswc*sw_heating_param
+
 
       return
 !...................................

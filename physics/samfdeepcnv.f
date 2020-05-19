@@ -2474,13 +2474,10 @@ c
           if (cnvflg(i) .and. k <= kmax(i)) then
             if(k <= ktcon(i)) then
               dellat = (dellah(i,k) - hvap * dellaq(i,k)) / cp
-              t1(i,k) = t1(i,k) + dellat * xmb(i) * dt2
-              q1(i,k) = q1(i,k) + dellaq(i,k) * xmb(i) * dt2
-!             tem = 1./rcs(i)
-!             u1(i,k) = u1(i,k) + dellau(i,k) * xmb(i) * dt2 * tem
-!             v1(i,k) = v1(i,k) + dellav(i,k) * xmb(i) * dt2 * tem
-              u1(i,k) = u1(i,k) + dellau(i,k) * xmb(i) * dt2
-              v1(i,k) = v1(i,k) + dellav(i,k) * xmb(i) * dt2
+              t1(i,k) = t1(i,k) + dellat * xmb(i) * dt2 * sas_dt_param
+              q1(i,k) = q1(i,k)+dellaq(i,k)*xmb(i)* dt2 * sas_dq_param
+              u1(i,k) = u1(i,k)+dellau(i,k) * xmb(i)*dt2* sas_du_param
+              v1(i,k) = v1(i,k)+dellav(i,k) * xmb(i)*dt2* sas_dv_param
               dp = 1000. * del(i,k)
               delhbar(i) = delhbar(i) + dellah(i,k)*xmb(i)*dp/grav
               delqbar(i) = delqbar(i) + dellaq(i,k)*xmb(i)*dp/grav

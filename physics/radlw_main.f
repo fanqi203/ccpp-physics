@@ -1161,13 +1161,13 @@
 
 !> -# Save outputs.
 
-        topflx(iplon)%upfxc = totuflux(nlay)
-        topflx(iplon)%upfx0 = totuclfl(nlay)
+        topflx(iplon)%upfxc = totuflux(nlay)*lw_topflx_param
+        topflx(iplon)%upfx0 = totuclfl(nlay)*lw_topflx_param
 
-        sfcflx(iplon)%upfxc = totuflux(0)
-        sfcflx(iplon)%upfx0 = totuclfl(0)
-        sfcflx(iplon)%dnfxc = totdflux(0)
-        sfcflx(iplon)%dnfx0 = totdclfl(0)
+        sfcflx(iplon)%upfxc = totuflux(0)*lw_sfcflx_param
+        sfcflx(iplon)%upfx0 = totuclfl(0)*lw_sfcflx_param
+        sfcflx(iplon)%dnfxc = totdflux(0)*lw_sfcflx_param
+        sfcflx(iplon)%dnfx0 = totdclfl(0)*lw_sfcflx_param
 
         if (ivflip == 0) then       ! output from toa to sfc
 
@@ -1184,7 +1184,7 @@
 
           do k = 1, nlay
             k1 = nlp1 - k
-            hlwc(iplon,k1) = htr(k)
+            hlwc(iplon,k1) = htr(k)*lw_heating_param
           enddo
 
 !! --- ...  optional clear sky heating rate
@@ -1218,7 +1218,7 @@
           endif
 
           do k = 1, nlay
-            hlwc(iplon,k) = htr(k)
+            hlwc(iplon,k) = htr(k)*lw_heating_param
           enddo
 
 !! --- ...  optional clear sky heating rate
